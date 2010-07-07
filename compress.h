@@ -1,5 +1,5 @@
 /**
-$Id: compress.h 3102 2010-07-07 05:58:50Z Bear $
+$Id: compress.h 3106 2010-07-07 08:07:01Z Bear $
 
 Copyright (c) 2010 Nuwa Information Co., Ltd, All Rights Reserved.
 
@@ -24,8 +24,8 @@ information: Portions Copyright [yyyy] [name of copyright owner]
 * CDDL HEADER END
 
 $Author: Bear $
-$Date: 2010-07-07 13:58:50 +0800 (星期三, 07 七月 2010) $
-$Revision: 3102 $ 
+$Date: 2010-07-07 16:07:01 +0800 (星期三, 07 七月 2010) $
+$Revision: 3106 $ 
 */
 #ifndef _PYLZJB_COMPRESS_
 #define _PYLZJB_COMPRESS_
@@ -34,9 +34,15 @@ $Revision: 3102 $
 #include <stddef.h>
 
 #ifdef WIN32
-#define uchar_t unsigned char
 #define uint16_t unsigned int
 #define uint32_t unsigned long
+#else
+#include <stdint.h>
+#include <sys/types.h>
+#endif
+
+#ifndef uchar_t
+#define uchar_t unsigned char
 #endif
 
 #ifndef NBBY

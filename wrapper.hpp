@@ -1,5 +1,5 @@
 /**
-$Id: wrapper.hpp 2981 2010-06-14 11:08:57Z Bear $
+$Id: wrapper.hpp 3106 2010-07-07 08:07:01Z Bear $
 
 Copyright (c) 2010 Nuwa Information Co., Ltd, All Rights Reserved.
 
@@ -24,8 +24,8 @@ information: Portions Copyright [yyyy] [name of copyright owner]
 * CDDL HEADER END
 
 $Author: Bear $
-$Date: 2010-06-14 19:08:57 +0800 (星期一, 14 六月 2010) $
-$Revision: 2981 $ 
+$Date: 2010-07-07 16:07:01 +0800 (星期三, 07 七月 2010) $
+$Revision: 3106 $ 
 */
 #ifndef _PYLZJB_WRAPPER_
 #define _PYLZJB_WRAPPER_
@@ -51,7 +51,7 @@ typedef boost::shared_ptr<std::string> StringPtr;
 
 // boost::shared_ptr<std::string> -> PyString Converter.
 struct StringPointerToPyString {
-    static ::PyObject* convert( ::boost::shared_ptr<::std::string> const& p_str ){
+    static ::PyObject* convert( ::boost::shared_ptr<std::string> const& p_str ){
         return ::PyString_FromStringAndSize( p_str->data(), p_str->size() );
     }
 };
@@ -135,7 +135,7 @@ BOOST_PYTHON_MODULE(PyLZJB){
     
     }
 
-    bp::to_python_converter<::StringPtr, ::StringPointerToPyString>();
+    bp::to_python_converter<StringPtr, ::StringPointerToPyString>();
 }
 
 #endif
