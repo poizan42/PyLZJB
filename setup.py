@@ -28,16 +28,20 @@
 # $Date: 2010-07-07 13:58:50 +0800 (星期三, 07 七月 2010) $
 # $Revision: 3102 $
 
-from distutils.core import setup
+from distutils.core import setup,Extension
 
-from Iuppiter import DistUtil
+#from Iuppiter import DistUtil
 
-sitePackagesDir = DistUtil.getSitePackagesDir()
+#sitePackagesDir = DistUtil.getSitePackagesDir()
 
-packages = []
-dataFiles = [
-    [sitePackagesDir, [DistUtil.getExtensionPath(module='PyLZJB')]],
-]
+#packages = []
+#dataFiles = [
+#    [sitePackagesDir, [DistUtil.getExtensionPath(module='PyLZJB')]],
+#]
+
+ext_module = Extension('PyLZJB', 
+	sources = ['compress.c', 'wrapper.cpp'],
+	libraries = ['boost_python'])
 
 setup(
     name='PyLZJB',
@@ -47,6 +51,7 @@ setup(
     author='Nuwa Information Co., Ltd.',
     author_email='bear@tracedig.com',
     url='http://www.tracedig.com/',
+	ext_modules = [ext_module]
     #packages = packages,
-    data_files = dataFiles,
+    #data_files = dataFiles,
 )
